@@ -1,5 +1,6 @@
 ---
 const { title } = Astro.props
+const url = new URL(Astro.request.url).pathname
 ---
 
 <style>
@@ -26,10 +27,10 @@ const { title } = Astro.props
 <body>
 	<div class="py-8 bg-gray-200 min-h-screen">
 		<nav class="flex justify-center space-x-10 pb-10">
-			<a class="nav-link font-bold" href="/">Home</a>
-			<a class="nav-link" href="/pricing">Pricing</a>
-			<a class="nav-link" href="/blog">Blog</a>
-			<a class="nav-link" href="/login">Login</a>
+			<a class={`nav-link ${url === '/' ? 'font-bold' : ''}`} href="/">Home</a>
+			<a class={`nav-link ${url === '/pricing' ? 'font-bold' : ''}`} href="/pricing">Pricing</a>
+			<a class={`nav-link ${url === '/blog' ? 'font-bold' : ''}`} href="/blog">Blog</a>
+			<a class={`nav-link ${url === '/login' ? 'font-bold' : ''}`} href="/login">Login</a>
 			<a class="nav-link hover:bg-blue-600 text-white bg-blue-500 px-3 py-2 -mt-2 rounded-lg" href="/signup">Sign up</a>
 		</nav>
 		<h1 class="text-center text-3xl mb-10 font-extrabold tracking-tight text-gray-900">
